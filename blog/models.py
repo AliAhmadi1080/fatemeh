@@ -15,7 +15,25 @@ class Blog(models.Model):
     date = models.DateField(auto_created=True,auto_now_add=True,verbose_name='زمان')
     categorys = models.ManyToManyField('Categorys',verbose_name='دسته بندی')
     text = models.TextField(verbose_name='متن اصلی')
-    like_count = models.IntegerField(default=0,auto_created=True,editable=False,verbose_name='تعداد لایک')
+    like_count = models.PositiveIntegerField(default=0,auto_created=True,verbose_name='تعداد لایک')
+
 
     def __str__(self) -> str:
         return f'{self.author} , {self.titel}'
+    
+
+class Comment(models.Model):
+    blog = models.ForeignKey(Blog,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,models.CASCADE)
+    text = models.TextField()
+
+    def __str__(self) -> str:
+        return f'{self.user} -> {self.blog}'
+    
+class Like(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog,on_delete=models.CASCADE)
+    is_liked = models.BooleanField(default=False)
+
+    def __str__(self) -> str:
+        return f'{self.user} -> {self.is_liked}'
