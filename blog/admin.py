@@ -1,6 +1,5 @@
 from django.contrib import admin
-from django.utils.translation import gettext_lazy as _
-from .models import Categorys,Blog
+from .models import *
 
 class AdminBlog(admin.ModelAdmin):
     list_display=('id','titel','date','author','like_count')
@@ -54,3 +53,5 @@ class AdminBlog(admin.ModelAdmin):
 
 admin.site.register(Blog,AdminBlog)
 admin.site.register(Categorys)
+admin.site.register(Comment)
+admin.site.register(Like)
