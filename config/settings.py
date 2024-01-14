@@ -140,3 +140,6 @@ EMAIL_HOST_PASSWORD = 'vbqh trvh bvqc kyfc'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+#site link
+BASE_URL = 'http://127.0.0.1:8000/'
