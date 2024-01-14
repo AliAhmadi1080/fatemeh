@@ -1,6 +1,7 @@
 from django.dispatch import receiver
 from django.db.models.signals import post_save
-from .models import Like,Comment
+from .models import Like,Comment,Blog
+from django.contrib.auth.models import User
 from django.conf import settings
 
 from django.core.mail import send_mail
@@ -21,7 +22,7 @@ def addlike(created,instance,**kwarg):
         
     
 @receiver(post_save,sender=Comment)
-def sendemail(created,instance,**kwarg):
+def commentsendemail(created,instance,**kwargs):
     if created:
         blog = instance.blog
         subject = 'Fatemeh site'
@@ -32,3 +33,19 @@ def sendemail(created,instance,**kwarg):
                   ,fail_silently=False, auth_user=None
                   , auth_password=None, connection=None
                   , html_message=None)
+        
+@receiver(post_save,sender=Blog)
+def blogsendmail(instance:Blog,created,**kwargs):
+    if created:
+        recipient_list = [i.email for i in User.objects.all()if i.email.strip()!='']
+        subject = 'New Blog form fatemeh site'
+        message = '''a new Blog from fatemhe site
+click to this link for going to Blog:
+%s'''%(settings.BASE_URL+str(instance.id))
+        email_from = settings.EMAIL_HOST_USER
+        send_mail( subject, message, email_from, recipient_list
+                  ,fail_silently=False, auth_user=None
+                  , auth_password=None, connection=None
+                  , html_message=None)
+
+        
