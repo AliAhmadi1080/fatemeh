@@ -3,9 +3,7 @@ from django.db.models.signals import post_save
 from .models import Like,Comment,Blog
 from django.contrib.auth.models import User
 from django.conf import settings
-
 from django.core.mail import send_mail
-
 
 @receiver(post_save,sender=Like)
 def addlike(created,instance,**kwarg):
@@ -49,3 +47,4 @@ click to this link for going to Blog:
                   , html_message=None)
 
         
+
