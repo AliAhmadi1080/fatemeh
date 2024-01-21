@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 class Categorys(models.Model):
     name = models.CharField(max_length=60,verbose_name='اسم عنوان')
@@ -20,6 +21,9 @@ class Blog(models.Model):
 
     def __str__(self) -> str:
         return f'{self.author} , {self.titel}'
+    
+    def get_absolute_url(self):       
+        return reverse('detaileblog', args=[str(self.pk)])
     
 
 class Comment(models.Model):
