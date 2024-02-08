@@ -2,6 +2,8 @@ from django.shortcuts import render
 from blog.models import Blog
 # Create your views here.
 
+def aboutpage(request):
+    return render(request, 'pages/about.html')
 def contactpage(request):
     return render(request,'pages/contact.html')
 
