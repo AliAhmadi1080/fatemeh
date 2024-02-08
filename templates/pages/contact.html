@@ -1,1 +1,37 @@
 {% include "base.html" %} {% load static %}
+<div class="contianer">
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >آدرس ایمیل</label
+          >
+          <input
+            required
+            type="email"
+            name="email"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="name@example.com"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label"
+            >محتوا متن</label
+          >
+          <textarea
+            required
+            name="text"
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">ارسال</button>
+      </form>
+    </div>
+  </div>
+</div>
