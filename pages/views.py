@@ -1,10 +1,26 @@
 from django.shortcuts import render
 from blog.models import Blog
+from django.conf import settings
+from django.core.mail import send_mail
 # Create your views here.
 
 def aboutpage(request):
     return render(request, 'pages/about.html')
 def contactpage(request):
+    if request.method == 'POST':
+        if request.POST['email'].strip() != '' and request.POST['text'].strip != '':
+
+            print(request.POST)
+
+            subject = f'Fatemeh site-contact masege from {request.POST["email"]}'
+            message = request.POST['text']
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [settings.EMAIL_HOST_USER]
+            send_mail( subject, message, email_from, recipient_list
+                    ,fail_silently=False, auth_user=None
+                    , auth_password=None, connection=None
+                    , html_message=None)
+        
     return render(request,'pages/contact.html')
 
 def homepage(request):
