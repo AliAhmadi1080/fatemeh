@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" style="font-family: Vazirmatn, sans-serif !important">
   <head>
     <meta charset="utf-8" />
     <meta
@@ -46,9 +46,24 @@
   </head>
 
   <body id="body" style="font-family: Vazirmatn, sans-serif !important">
-    <nav  style="font-family: Vazirmatn, sans-serif!important" class="navbar navbar-expand-lg navbar-light" id="mainNav">
-      <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="{% url 'homepage' %}">خانه</a>
+    <nav
+      style="font-family: Vazirmatn, sans-serif !important"
+      class="navbar navbar-expand-lg navbar-light"
+      id="mainNav"
+    >
+      <div
+        style="font-family: Vazirmatn, sans-serif !important"
+        class="container px-4 px-lg-5"
+      >
+        <a
+          style="
+            font-family: Vazirmatn, sans-serif !important;
+            font-size: 15px !important;
+          "
+          class="navbar-brand"
+          href="{% url 'homepage' %}"
+          >خانه</a
+        >
         <button
           class="navbar-toggler"
           type="button"
@@ -57,20 +72,34 @@
           aria-controls="navbarResponsive"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          style="font-family: Vazirmatn, sans-serif !important"
         >
           Menu
           <i class="fas fa-bars"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ms-auto py-4 py-lg-0">
+        <div
+          style="font-family: Vazirmatn, sans-serif !important; color: white"
+          class="collapse navbar-collapse"
+          id="navbarResponsive"
+        >
+          <ul
+            style="font-family: Vazirmatn, sans-serif !important"
+            class="navbar-nav ms-auto py-5 py-lg-0"
+          >
             <li class="nav-item">
-              <a class="nav-link px-lg-3 py-3 py-lg-4" href='{% url "about" %}'>درباره</a>
+              <a
+                class="nav-link px-lg-3 py-3 py-lg-4"
+                style="font-size: 15px !important"
+                href="{% url 'about' %}"
+                >درباره من</a
+              >
             </li>
             <li class="nav-item">
               <a
                 class="nav-link px-lg-3 py-3 py-lg-4"
                 href="{% url 'contact' %}"
-                >تماس با ما</a
+                style="font-size: 15px !important"
+                >تماس با من</a
               >
             </li>
           </ul>
@@ -81,7 +110,6 @@
     <header
       class="masthead"
       style="background-image: url(static/assets/img/home-bg.jpg)"
-      style="font-family: Vazirmatn, sans-serif!important"
     >
       <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -96,15 +124,32 @@
     </header>
 
     <!-- Main Content-->
-    <div class="container px-4 px-lg-5"  style="font-family: Vazirmatn, sans-serif!important">
+    <div
+      style="font-family: Vazirmatn, sans-serif !important"
+      class="container px-4 px-lg-5"
+    >
       <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-7">
+        <div
+          style="font-family: Vazirmatn, sans-serif !important"
+          class="col-md-10 col-lg-8 col-xl-7"
+        >
           <!-- Post preview-->
 
           {% for blog in blogs %}
-          <div class="post-preview">
-            <a href="{% url 'detaileblog' blog.id %}">
-              <h2 class="post-title">{{blog.titel}}</h2>
+          <div
+            style="font-family: Vazirmatn, sans-serif !important"
+            class="post-preview"
+          >
+            <a
+              style="font-family: Vazirmatn, sans-serif !important"
+              href="{% url 'detaileblog' blog.id %}"
+            >
+              <h2
+                style="font-family: Vazirmatn, sans-serif !important"
+                class="post-title"
+              >
+                {{blog.titel}}
+              </h2>
             </a>
 
             <a href="{% url 'detaileblog' blog.id %}">
