@@ -2,6 +2,9 @@ from django.shortcuts import render
 from blog.models import Blog
 # Create your views here.
 
+def contactpage(request):
+    return render(request,'pages/contact.html')
+
 def homepage(request):
     a = Blog.objects.all()[:5]
     return render(request,'base.html',{'blogs':a})
