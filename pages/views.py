@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from blog.models import Blog, Comment
 from django.conf import settings
 from django.core.mail import send_mail
@@ -28,15 +28,15 @@ def homepage(request):
     return render(request,'base.html',{'blogs':a})
 
 def detaleblog(request,pk):
-    a = Blog.objects.get(id=pk)
+    a = get_object_or_404(Blog,pk=pk)
     
     if request.method == 'POST':
-        comment = Comment(blog=a,text=request.POST['text'])
+        comment = Comment(blog=a,text=request.POST['text'],name=request.POST['name'])
         print(comment)
         comment.save()
             
     
-    b = Comment.objects.all().filter(blog=a)
+    b = Comment.objects.all().filter(blog=a,status='published')
 
     return render(request,'pages/blogdetaile.html',{'blogdetale':a,'comments':b})
 

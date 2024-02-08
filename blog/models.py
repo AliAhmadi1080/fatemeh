@@ -34,6 +34,7 @@ class Comment(models.Model):
     )
     status = models.CharField(max_length=9,
                   choices=STATUS_CHOICES,default='checking')
+    name = models.CharField(max_length=32)
     blog = models.ForeignKey(Blog,on_delete=models.CASCADE)
     text = models.TextField()
 

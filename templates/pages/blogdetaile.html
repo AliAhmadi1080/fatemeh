@@ -3,12 +3,24 @@
 <article class="mb-4">
   <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
-      <div class="col-md-10 col-lg-8 col-xl-7">
+      <div class="col-md-9 col-lg-8 col-xl-9">
         {{blogdetale.text}}
         <form method="post" action="">
           {% csrf_token %}
           <br />
 
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"
+              >اسم</label
+            >
+            <input
+              required
+              name="name"
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              placeholder="این اسم نمایش داده میشود"
+            />
+          </div>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label"
               >محتوا متن</label
@@ -25,9 +37,8 @@
           <button type="submit" class="btn btn-primary">ارسال</button>
         </form>
       </div>
-      <div class="col-md-2">
-        
-         {% for comment in comments %}{{comment.text}} <br />{% endfor%}
+      <div class="col-md-3 col-lg-4 col-xl-3">
+        {% for comment in comments %}{{comment.text}} <br />{% endfor%}
       </div>
     </div>
   </div>
