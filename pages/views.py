@@ -36,7 +36,7 @@ def detaleblog(request,pk):
         comment.save()
             
     
-    b = Comment.objects.all()
+    b = Comment.objects.all().filter(blog=a)
 
     return render(request,'pages/blogdetaile.html',{'blogdetale':a,'comments':b})
 
