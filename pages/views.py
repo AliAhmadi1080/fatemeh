@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from blog.models import Blog
+from blog.models import Blog, Comment
 from django.conf import settings
 from django.core.mail import send_mail
 # Create your views here.
@@ -29,8 +29,16 @@ def homepage(request):
 
 def detaleblog(request,pk):
     a = Blog.objects.get(id=pk)
+    
+    if request.method == 'POST':
+        comment = Comment(blog=a,text=request.POST['text'])
+        print(comment)
+        comment.save()
+            
+    
+    b = Comment.objects.all()
 
-    return render(request,'pages/blogdetaile.html',{'blogdetale':a})
+    return render(request,'pages/blogdetaile.html',{'blogdetale':a,'comments':b})
 
 def allblog(request):
     a = Blog.objects.all()
