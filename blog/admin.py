@@ -49,9 +49,12 @@ class AdminBlog(admin.ModelAdmin):
             return self.add_fieldsets
         return super().get_fieldsets(request, obj)
 
-    
+class AdminComment(admin.ModelAdmin):
+    list_display = ('id','blog','status')
+    list_display_links = ('id',)
+    list_filter = ('status',)
 
 admin.site.register(Blog,AdminBlog)
 admin.site.register(Categorys)
-admin.site.register(Comment)
+admin.site.register(Comment,AdminComment)
 admin.site.register(Like)

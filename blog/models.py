@@ -27,12 +27,18 @@ class Blog(models.Model):
     
 
 class Comment(models.Model):
+    STATUS_CHOICES = (
+        ('checking', 'Checking'),
+        ('rejected','Rejected'),
+        ('published','Published')
+    )
+    status = models.CharField(max_length=9,
+                  choices=STATUS_CHOICES,default='checking')
     blog = models.ForeignKey(Blog,on_delete=models.CASCADE)
-    user = models.ForeignKey(User,models.CASCADE)
     text = models.TextField()
 
     def __str__(self) -> str:
-        return f'{self.user} -> {self.blog}'
+        return f'{self.blog.titel}'
     
 class Like(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
