@@ -18,7 +18,7 @@ class AdminBlog(admin.ModelAdmin):
         (
             ('بدنه'),
             {
-                'fields':['sub_titel','categorys','text']
+                'fields':['sub_titel','categorys','text','image']
             }
         ),
         (
@@ -39,7 +39,7 @@ class AdminBlog(admin.ModelAdmin):
             (
                 ('بدنه'),
                 {
-                    'fields': ['sub_titel','categorys','text']
+                    'fields': ['sub_titel','categorys','text','image']
                 }
             ),
         )
