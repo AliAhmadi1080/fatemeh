@@ -9,9 +9,6 @@ def aboutpage(request):
 def contactpage(request):
     if request.method == 'POST':
         if request.POST['email'].strip() != '' and request.POST['text'].strip != '':
-
-            print(request.POST)
-
             subject = f'Fatemeh site-contact masege from {request.POST["email"]}'
             message = request.POST['text']
             email_from = settings.EMAIL_HOST_USER
@@ -32,7 +29,6 @@ def detaleblog(request,pk):
     
     if request.method == 'POST':
         comment = Comment(blog=a,text=request.POST['text'],name=request.POST['name'])
-        print(comment)
         comment.save()
             
     
@@ -43,5 +39,4 @@ def detaleblog(request,pk):
 def allblog(request):
     a = Blog.objects.all()
     context = {'bloglist':a}
-    print(a, context)
     return render(request, 'pages/bloglist.html', context)
