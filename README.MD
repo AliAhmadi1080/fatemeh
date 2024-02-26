@@ -7,3 +7,4 @@
 - [-] add celery
 - [-] dockerizeing
 - [-] add like
+- [-] add logging
